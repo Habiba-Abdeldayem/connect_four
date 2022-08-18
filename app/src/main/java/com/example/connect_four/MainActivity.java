@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textViewPlayer2 = (TextView) findViewById(R.id.p2_textView);
         playAgain = (Button)findViewById(R.id.button_playAgain);
         home = (Button)findViewById(R.id.button_home);
-        setButtons();
     }
 
 
