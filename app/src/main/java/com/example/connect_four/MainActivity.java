@@ -22,13 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int player1Points;
     private int player2Points;
     // Later we will set button ids from R.drawable file , check onClick()
-    private int greyBtn_id;
-    private int blueBtn_id;
-    private int redBtn_id;
-    private String greyBtn_background;
 
-    private TextView textViewPlayer1;
-    private TextView textViewPlayer2;
     private TextView textViewScore1;
     private TextView textViewScore2;
     private Button playAgain;
@@ -40,13 +34,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.eman_layout);
 
 
-        textViewPlayer1 = (TextView) findViewById(R.id.p1_textView);
-        textViewPlayer2 = (TextView) findViewById(R.id.p2_textView);
         textViewScore1 = (TextView) findViewById(R.id.player1score);
         textViewScore2 = (TextView) findViewById(R.id.player2score);
         playAgain = (Button)findViewById(R.id.button_playAgain);
         home = (Button)findViewById(R.id.button_home);
+        playAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetBoard();
+            }
+        });
         setButtons();
+
     }
 
 
@@ -61,10 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int R_buttonId = getResources().getIdentifier(button_id,"id",getPackageName());
                 buttons[i][j] = findViewById(R_buttonId);
                 // logic is written in onClick() , we had also to implement View.OnClickListener
-                Log.i("aa","i'm in the blue");
-
                 buttons[i][j].setOnClickListener(this);
-                greyBtn_background = findViewById(R.id.imageButton00).getResources().toString();
                 buttons[i][j].setTag("0"); // 1 for blue, 2 for red, 0 for grey
 
             }
@@ -84,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(player1Turn){
             clicked_button.setTag("1");
             clicked_button.setBackgroundResource(R.drawable.blue_btn);
-            Log.i("blue","i'm in the blue");
         }
         else{
             clicked_button.setTag("2");
@@ -107,8 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else{
             player1Turn = !player1Turn;
         }
-
-
     }
 
 
@@ -120,8 +113,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             for (int j = 0; j < 4; j++) {
                 field[i][j] = buttons[i][j].getTag().toString();
             }
-
         }
+
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if (field[i][0].equals(field[i][1])&&field[i][0].equals(field[i][2])&&field[i][0].equals(field[i][3])&&!field[i][0].equals("0"))
@@ -139,11 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {
                     return true;
                 }
-
-
             }
-//            return false;
-
         }
         return false;
 
@@ -184,4 +173,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         roundCount =0;
         player1Turn = true;
     }
+
+    private boolean checkClickability(View view){
+        ImageButton clickedButton = (ImageButton) view;
+        String buttonId= view.getResources().getResourceEntryName(view.getId());
+        int gameStatePointer = Integer.parseInt(buttonId.substring(buttonId.length()-2,buttonId.length()));
+        gameStatePointer+=10;
+        String lowerBtnId = "ImageButton"+gameStatePointer;
+
+        int R_buttonId = getResources().getIdentifier(lowerBtnId,"id",getPackageName());
+        ImageButton lowerBtn  = (ImageButton) findViewById(R_buttonId);
+
+        if(lowerBtn.getTag().equals("0")) {
+            return false;
+        }
+        else {
+            return true;
+        }
+
+        switch (view.getId()) {
+
+                case R.id.imageButton30:
+                case R.id.imageButton31:
+                case R.id.imageButton32:
+                case R.id.imageButton33:
+                    return true;
+
+        }
+
+       // متنسيش الريتيرن يأمان هيضربلك ايرور في نافوخك يأمااان
+    }
+
 }
