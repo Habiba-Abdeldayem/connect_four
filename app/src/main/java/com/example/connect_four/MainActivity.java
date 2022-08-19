@@ -9,10 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button[][] buttons = new Button[4][4];
+    private ImageButton[][] buttons = new ImageButton[4][4];
 
     private boolean player1Turn = true;
 
@@ -28,18 +29,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView textViewPlayer1;
     private TextView textViewPlayer2;
+    private TextView textViewScore1;
+    private TextView textViewScore2;
     private Button playAgain;
     private Button home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.eman_layout);
+
 
         textViewPlayer1 = (TextView) findViewById(R.id.p1_textView);
         textViewPlayer2 = (TextView) findViewById(R.id.p2_textView);
+        textViewScore1 = (TextView) findViewById(R.id.player1score);
+        textViewScore2 = (TextView) findViewById(R.id.player2score);
         playAgain = (Button)findViewById(R.id.button_playAgain);
         home = (Button)findViewById(R.id.button_home);
+        setButtons();
     }
 
 
@@ -54,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int R_buttonId = getResources().getIdentifier(button_id,"id",getPackageName());
                 buttons[i][j] = findViewById(R_buttonId);
                 // logic is written in onClick() , we had also to implement View.OnClickListener
+                Log.i("aa","i'm in the blue");
+
                 buttons[i][j].setOnClickListener(this);
                 greyBtn_background = findViewById(R.id.imageButton00).getResources().toString();
                 buttons[i][j].setTag("0"); // 1 for blue, 2 for red, 0 for grey
@@ -92,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 player2wins();
             }
         }
-        else if(roundCount==9){
+        else if(roundCount==16){
             draw();
         }
         else{
@@ -115,34 +124,64 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (field[i][0].equals(field[i][1])&&field[i][0].equals(field[i][2])&&!field[i][0].equals(greyBtn_background))
+                if (field[i][0].equals(field[i][1])&&field[i][0].equals(field[i][2])&&field[i][0].equals(field[i][3])&&!field[i][0].equals("0"))
                 {
                     return true;
                 }
-                else if (field[0][i].equals(field[1][i])&&field[0][i].equals(field[2][i])&&!field[0][i].equals(greyBtn_background)) {
+                else if (field[0][i].equals(field[1][i])&&field[0][i].equals(field[2][i])&&field[0][i].equals(field[3][i])&&!field[0][i].equals("0")) {
                     return true;
                 }
-                else if (field[0][0].equals(field[1][1])&&field[0][0].equals(field[2][2])&&field[0][0].equals(field[3][3])&&!field[0][0].equals(greyBtn_background))
+                else if (field[0][0].equals(field[1][1])&&field[0][0].equals(field[2][2])&&field[0][0].equals(field[3][3])&&!field[0][0].equals("0"))
                 {
                     return true;
                 }
-                else if (field[3][0].equals(field[2][1])&&field[3][0].equals(field[1][2])&&field[3][0].equals(field[0][3])&&!field[3][0].equals(greyBtn_background))
+                else if (field[3][0].equals(field[2][1])&&field[3][0].equals(field[1][2])&&field[3][0].equals(field[0][3])&&!field[3][0].equals("0"))
                 {
                     return true;
                 }
 
 
             }
+//            return false;
 
         }
         return false;
+
     }
 
 
     private void player1wins() {
+        player1Points++;
+        Toast.makeText(this, "Player 1 wins!", Toast.LENGTH_SHORT).show();
+        updatePointsText();
+        resetBoard();
     }
+
     private void player2wins() {
+        player2Points++;
+        Toast.makeText(this, "Player 2 wins!", Toast.LENGTH_SHORT).show();
+        updatePointsText();
+        resetBoard();
     }
     private void draw() {
+        Toast.makeText(this, "Draw!", Toast.LENGTH_SHORT).show();
+        resetBoard();
+    }
+
+    private void updatePointsText() {
+        textViewScore1.setText("Player 1: " + player1Points);
+        textViewScore2.setText("Player 2: " + player2Points);
+    }
+
+    private void resetBoard() {
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                buttons[i][j].setTag("0");
+                buttons[i][j].setBackgroundResource(R.drawable.grey_btn);
+            }
+        }
+
+        roundCount =0;
+        player1Turn = true;
     }
 }

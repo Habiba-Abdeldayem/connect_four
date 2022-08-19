@@ -6,122 +6,117 @@
     android:layout_height="match_parent"
     android:background="#D7CCC8"
     tools:context=".MainActivity">
-
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:columnCount="4"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        app:layout_constraintTop_toBottomOf="@+id/player2score">
         <ImageButton
             android:id="@+id/imageButton00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn" />
-
+            android:background="@drawable/grey_btn"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton
             android:id="@+id/imageButton01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/grey_btn" />
-
         <ImageButton
             android:id="@+id/imageButton02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn" />
-
+            android:background="@drawable/grey_btn"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton
             android:id="@+id/imageButton03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/grey_btn" />
-
         <ImageButton
             android:id="@+id/imageButton10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn" />
-
+            android:background="@drawable/grey_btn"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton
             android:id="@+id/imageButton11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn" />
-
+            android:background="@drawable/grey_btn"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton
             android:id="@+id/imageButton12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/grey_btn" />
-
         <ImageButton
             android:id="@+id/imageButton13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/grey_btn" />
-
         <ImageButton
             android:id="@+id/imageButton20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn" />
-
+            android:background="@drawable/grey_btn"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton
             android:id="@+id/imageButton21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/grey_btn" />
-
         <ImageButton
             android:id="@+id/imageButton22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn" />
-
+            android:background="@drawable/grey_btn"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton
             android:id="@+id/imageButton23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn" />
-
+            android:background="@drawable/grey_btn"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton
             android:id="@+id/imageButton30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn" />
-
+            android:background="@drawable/grey_btn"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton
             android:id="@+id/imageButton31"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/grey_btn" />
-
         <ImageButton
             android:id="@+id/imageButton32"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn" />
-
+            android:background="@drawable/grey_btn"
+            tools:ignore="SpeakableTextPresentCheck" />
         <ImageButton
             android:id="@+id/imageButton33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn" />
+            android:background="@drawable/grey_btn"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.gridlayout.widget.GridLayout>
 
     <LinearLayout
-        android:layout_width="407dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="409dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="89dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout">
+        tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/button_playAgain"
@@ -129,7 +124,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#FFB74D"
-            android:text="@string/play_again" />
+            android:text="@string/play_again"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/button_home"
@@ -138,48 +134,58 @@
             android:layout_weight="1"
             android:background="@color/orange"
             android:text="@string/home"
+            android:textColor="#1B5E20"
             app:backgroundTint="@color/orange" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/p1_textView"
-        android:layout_width="66dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/player1"
-        app:layout_constraintEnd_toStartOf="@+id/p2_textView"
-        app:layout_constraintHorizontal_bias="0.231"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/p2_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="72dp"
-        android:text="@string/player2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/player2score"
+        android:layout_width="67dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="36dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/player1score"
+        app:layout_constraintTop_toBottomOf="@+id/p2_textView"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/player1score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="67dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="164dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/player2score"
-        app:layout_constraintTop_toBottomOf="@+id/p1_textView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p1_textView"
+        tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/player2score"
+        android:id="@+id/p1_textView"
+        android:layout_width="58dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/player1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/p2_textView"
+        android:layout_width="59dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/player2"
+        app:layout_constraintStart_toEndOf="@+id/p1_textView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="72dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/p2_textView" />
-
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
