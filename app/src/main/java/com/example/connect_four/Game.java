@@ -1,7 +1,5 @@
 package com.example.connect_four;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -65,7 +63,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
         if(player1Turn){
             clicked_button.setTag("1");
-            clicked_button.setBackgroundResource(R.drawable.blue_btn);
+            clicked_button.setBackgroundResource(R.drawable.orange_btn);
         }
         else{
             clicked_button.setTag("2");
