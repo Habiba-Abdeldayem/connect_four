@@ -169,13 +169,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         }
-/*        switch (view.getId()) {
-                case R.id.imageButton30:
-                case R.id.imageButton31:
-                case R.id.imageButton32:
-                case R.id.imageButton33:
-                    return true;
-        }*/
-        // متنسيش الريتيرن يأمان هيضربلك ايرور في نافوخك يأمااان
+
     }
 }
